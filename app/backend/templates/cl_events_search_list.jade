@@ -1,0 +1,29 @@
+mixin events_search_list(options)
+   - var len = options.events.length
+   if len > 0
+      each counter in [0, 1, 2, 3, 4, 5, 6, 7]
+         - var event = (!!options.events)?options.events[counter]:null
+         if event
+            span.event-wrapper
+               a(target='_blank', href='/events/get?id=' + event._id)
+                  img(height="90", width="90", src="#{event.image}")
+               a(target='_blank', href='/events/get?id=' + event._id)
+                  h2 #{event.eventName}
+               span.event-category #{event.eventType}
+               br
+               span.event-date #{event.friendlyDate}
+      if len > 8
+         span.more-event_container.hidden
+            each event, i in options.events
+               if i >= 8
+                  span.event-wrapper
+                     a(target='_blank', href='/events/get?id=' + event._id)
+                        img(height="90", width="90", src="#{event.image}")
+                     a(target='_blank', href='/events/get?id=' + event._id)
+                        h2 #{event.eventName}
+                     span.event-category #{event.eventType}
+                     br
+                     span.event-date #{event.friendlyDate}
+         a.more-events_switch More events
+   else
+      p.message No results found!

@@ -1,0 +1,8 @@
+#!/bin/bash
+gulp compile;
+rm -rf ./node_modules;
+
+npm install --production;
+npm shrinkwrap
+rm -r ./app/frontend ./app/docs ./gulpfile.js ./production;
+echo -e ".DS_Store\n.gitignore\n.idea\napp/backend/db\nnode_modules\nstatic/img/uploads\n" > ./.gitignore;

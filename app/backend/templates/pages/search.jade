@@ -1,0 +1,27 @@
+include ../kit/kit
+include ../cl_events_search_list
+include ../cl_common_search
+doctype html
+html
+    head
+        title!= ""
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#search
+        div.content-wrapper
+            include ../header
+            div.content
+                div#orgs-search-list.org-list_wrapper 
+                    span.event-search-filters
+                        form#search-filters(action='/search', method='GET')
+                            input.input-search(name='searchText', placeholder='', value=page.searchResult.searchText?page.searchResult.searchText:null)
+                            mixin kit_button({size: "n", text: "Search", id: "search"})
+
+                    div#search-results
+                        mixin common_search(page.searchResult)
+
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

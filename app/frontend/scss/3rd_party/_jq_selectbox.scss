@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+.sbHolder {
+  background-color: #fff;
+  border: 1px solid #c5c5c5;
+  height: 42px;
+  position: relative;
+  width: 432px;
+  @include border_radius(4px);
+}
+.sbHolder:focus .sbSelector{
+
+}
+.sbSelector {
+  display: block;
+  line-height: 42px;
+  height: 42px;
+  left: 10px;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 10px;
+  top: 0;
+  width: 92%;
+  @include triple_dot();
+}
+
+.sbSelector_init {
+  color: #26292a;
+}
+
+.sbSelector:link, .sbSelector:visited, .sbSelector:hover{
+  @include roboto(16px, regular, #cdcdcd);
+  outline: none;
+  text-decoration: none;
+}
+.sbSelector_active:link, .sbSelector_active:visited, .sbSelector_active:hover{
+  color: $green_text !important;
+}
+.sbToggle{
+  background: url('../img/select_arrow.png') center no-repeat;;
+  display: block;
+  height: 42px;
+  outline: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+}
+.sbToggle:hover{
+  background: url('../img/select_arrow_active.png') center no-repeat;;
+}
+.sbToggleOpen{
+  background: url('../img/select_arrow.png') center no-repeat;;
+}
+.sbToggleOpen:hover{
+  background: url('../img/select_arrow.png') center no-repeat;;
+}
+.sbHolderDisabled{
+  background-color: #3C3C3C;
+  border: solid 1px #515151;
+}
+.sbHolderDisabled .sbHolder{
+
+}
+.sbHolderDisabled .sbToggle{
+
+}
+.sbOptions{
+  background-color: #fff;
+  border: solid 1px #c5c5c5;
+  list-style: none;
+  left: -1px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 42px;
+  width: 100%;
+  z-index: 20;
+  overflow-y: auto;
+  @include border_radius(4px);
+}
+.sbOptions li{
+  padding: 0 17px;
+}
+.sbOptions a{
+  line-height: 27px;
+  height: 27px;
+  border-bottom: dotted 1px #515151;
+  display: block;
+  outline: none;
+  padding: 7px 0 7px 3px;
+  @include triple_dot();
+}
+.sbOptions a:link, .sbOptions a:visited{
+  @include roboto(16px, regular, #9b9b9b);
+  text-decoration: none;
+}
+.sbOptions a:hover,
+.sbOptions a:focus,
+.sbOptions a.sbFocus{
+  color: $green_text;
+}
+.sbOptions li.last a{
+  border-bottom: none;
+}
+.sbOptions .sbDisabled{
+  line-height: 27px;
+  height: 27px;
+  border-bottom: dotted 1px #515151;
+  @include roboto(16px, regular, #cdcdcd);
+  display: block;
+  padding: 7px 0 7px 3px;
+}
+.sbOptions .sbGroup{
+  border-bottom: dotted 1px #515151;
+  color: $green_text;
+  display: block;
+  font-weight: bold;
+  padding: 7px 0 7px 3px;
+}
+.sbOptions .sbSub{
+  padding-left: 17px;
+}

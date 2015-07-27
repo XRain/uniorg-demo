@@ -1,0 +1,78 @@
+mixin main_calendar(options)
+    - var weekDays = options.weekdays;
+    
+    a#back-to-list.backNavLink #{page.i18n.backToList}
+    div.calendar
+        input.selected-date(type='hidden', value=options.selectedDate)
+        div.year #{options.year}
+        div.months
+            a.calendar_prev-month
+            a.calendar_next-month
+            div.months-gradient
+            span.months-wrapper
+                p.prev-month #{options.prevMonth.monthName}
+                p.selected-month #{options.selectedMonth.monthName}
+                p.next-month #{options.nextMonth.monthName}
+
+        div.week-days
+            each dayName in weekDays
+                p= dayName
+        div.days
+            each day in options.prevMonth.days
+                span.cal-day.cal-day_inactive(class=day.events.length > 0?'':'empty')
+                    if day.events.length > 0
+                        img(src=day.events[0].image, height="162", width="162", alt="")
+                    p(class=day.events.length > 0?'':'daynum-empty') #{day.day}
+
+            each day in options.selectedMonth.days
+                if day.day
+                    span.cal-day(class=day.events.length > 0?'':'empty')
+                        if day.events.length > 0
+                            if day.events.length < 2
+                                span.event-thumbnail
+                                    span
+                                        img(src=day.events[0].image, height="162", width="162", alt="")
+                            else
+                                for v, k in day.events
+                                    if k < 3
+                                        span.event-thumbnail
+                                            span.event-thumbnail_wrapper(class='event-thumb_' + k)
+                                                img(src=day.events[k].image, height="162", width="162", alt="")
+                            div.popup.day-events.hidden(id='events-'+ options.selectedMonth.monthName.toLowerCase() + '_'+ day.day)
+                                i.day-events_close
+                                if day.events.length > 1
+                                    a.day-events_left.hidden
+                                    a.day-events_right
+                                div.day-events_wrapper
+                                    each evt, key in day.events
+                                        - var evtClass = 'day-event' + key
+                                        span.day-event(class=key>0?evtClass + ' hidden':evtClass)
+                                            span.event-month-title #{evt.friendlyDate.toUpperCase()}
+                                            span.event-day-title #{evt.dayOfWeek}
+                                            a(href='/events/get?id=' + evt._id, target='_blank')
+                                                img(alt='', src=evt.image, height='236', width='236')
+                                            a(href='/events/get?id=' + evt._id, target='_blank')
+                                                span.day-event_title #{evt.eventName}
+                                            span.day-event_org-name by 
+                                                a(href='/orgs/get?id=' + evt.owner, target='_blank') #{evt.ownerName}
+                                                each coHost in evt.coHosts
+                                                    a(href='/orgs/get?id=' + coHost.id, target='_blank') #{coHost.name}
+                                            span.day-event_about #{evt.about}
+                        p.show-events_button(id='button-'+ options.selectedMonth.monthName.toLowerCase() + '_'+ day.day, class=day.events.length > 0?'':'daynum-empty') #{day.day}
+            each day in options.nextMonth.days
+                if day.day
+                    span.cal-day.cal-day_inactive(class=day.events.length > 0?'':'empty')
+                        if day.events.length > 0
+                            img(src=day.events[0].image, height="162", width="162", alt="")
+                        p(class=day.events.length > 0?'':'daynum-empty') #{day.day}
+        div.calendar-controls
+            span.caledar-filters
+                p #{page.i18n.show}
+                span.calendar-filters_wrapper
+                    i
+                    label.filters-reminder #{page.i18n.selectTypes}
+                    form#calendar-filters.hidden
+                        each type in page.structure.evtTypes
+                            mixin checkbox({title: type.title, name: type.name, checked: options.filters[type.name]?'1':null})
+                        
+            mixin date_picker({text: page.i18n.datePicker, size: 'm', selectedDate: options.selectedDate, name: 'calendarDatePicker'})

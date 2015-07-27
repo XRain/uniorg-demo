@@ -1,0 +1,45 @@
+include ../kit/kit
+mixin tab_info
+   div#info.content-menu_tab
+      form#upload-photo(enctype = 'multipart/form-data',action = '/upload/photo', method = 'post')
+         input#org-img-input.hidden(type='file')
+      form#personal-info(action='/users/update', method='POST')
+         if !page.user.confirmed
+            p.confirmation-warn Account is awaiting for confirmation
+         span.personal-container
+            input.input-gray.input_size_m(name='title', placeholder=page.i18n.enterTitle, value=page.user.name)
+            mixin select_list({name: 'department', data: page.structure.orgDepartments, hint: page.i18n.chooseOrgDept, selected: page.user.department})
+            mixin select_list({name: 'orgType', data: page.structure.orgTypes, hint: page.i18n.chooseOrgType, selected: page.user.orgType})
+         span.personal-container
+            input.input-gray.input_size_m(name='contactEmail', placeholder=page.i18n.enterEmail, value=page.user.contactEmail)
+            input.input-gray.input_size_m(name='phone', placeholder=page.i18n.enterPhone, value=page.user.phone)
+            input.input-gray.input_size_m(name='location', placeholder=page.i18n.enterLocation, value=page.user.location)
+         span.personal-container
+            span.event-image
+               h1 #{page.i18n.image}
+               span.org-img_container
+                  img(src=page.user.image?page.user.image:'/static/img/no_img.png', height='236', width='236')
+               span.event-img_controls
+                  input#org-img-path(type='hidden' name='image', value=page.user.image)
+                  mixin kit_button({size: 'n', text: page.i18n.uploadImg, id: 'update-org_img'})
+                  p.annotation #{page.i18n.imgTypes}
+                  p.annotation #{page.i18n.imgProblemsWarn}
+         span.personal-container
+            h1 #{page.i18n.social}
+            span.input-social.input-homepage
+               input.input-gray.input-url.input_size_m(name='homepage', placeholder=page.i18n.enterLink, value=page.user.homepage)
+            span.input-social.input-facebook
+               input.input-gray.input-url.input_size_m(name='facebook', placeholder=page.i18n.enterLink, value=page.user.facebook)
+            span.input-social.input-twitter
+               input.input-gray.input-url.input_size_m(name='twitter', placeholder=page.i18n.enterLink, value=page.user.twitter)
+            span.input-social.input-google
+               input.input-gray.input-url.input_size_m(name='google', placeholder=page.i18n.enterLink, value=page.user.google)
+
+         span.personal-container.wide-container
+            //mixin named_input({id: 'vacancies-qty', inputClass: 'number-input', title: page.i18n.numVacancies, name: 'vacancies', value: page.user.vacancies || '0'})
+            //br
+            //mixin named_input({id: 'vacancies-url', title: page.i18n.vacPage, name: 'vacanciesPage', value: page.user.vacanciesPage, placeholder: page.i18n.enterLink, inputClass: 'input-url'})
+            span.divider
+            h1 #{page.i18n.about}
+            textarea(name='about', placeholder=page.i18n.enterOrgInfo) #{page.user.about}
+         mixin kit_button({size: 'n', text: page.i18n.save, id: 'update-info_button'})

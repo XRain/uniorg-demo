@@ -1,0 +1,59 @@
+#vacancy {
+  h1 {
+    width: 100%;
+    margin: 86px 0 30px 0;
+    text-align: left;
+    border-bottom: 2px solid #000;
+    font-family: Helvetica-gyro;
+    font-size: 48px;
+    color: $gray_text;
+    padding: 0;
+  }
+  .event-category {
+    line-height: 18px;
+    position: absolute;
+    right: 0;
+    padding: 4px 12px;
+    width: 76px;
+    text-align: center;
+    top: 30px;
+    display: inline-block;
+    background-color: #484848;
+    @include roboto(14px, regular, #fff)
+  }
+  .full-event-date {
+    width: 86px;
+    text-align: center;
+  }
+  .vacancy-field_label, .vacancy-field {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 8px 0;
+  }
+  .common-detail a {
+    text-decoration: none;
+  }
+
+  .common-detail a:hover {
+    text-decoration: underline;
+  }
+  
+  .vacancy-field_label {
+    width: 140px;
+    @include roboto(13px, regular, #9c9c9c);
+  }
+  .vacancy-field {
+    min-width: 430px;
+    @include roboto(16px, regular, $green_text);
+  }
+  .euro {
+    font-size: 16px;
+  }
+  .details {
+    border: none;
+    padding: 0;
+  }
+  .about {
+    font-size: 18px;
+  }
+}

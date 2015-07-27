@@ -1,0 +1,69 @@
+$arrow_down: -4px -4px 15px 9px;
+$select_arrow_active: -4px -21px 15px 13px;
+$select_arrow: -4px -42px 15px 13px;
+$input_email: -4px -63px 26px 17px;
+$icon_delete_evt: -4px -88px 20px 20px;
+$search: -4px -116px 19px 20px;
+$icon_evt_stat_act: -4px -144px 20px 20px;
+$icon_evt_stat: -4px -172px 20px 20px;
+$icon_edit_event_act: -4px -200px 20px 20px;
+$search_inactive: -4px -228px 19px 20px;
+$icon_delete_evt_act: -4px -256px 20px 20px;
+$icon_edit_event: -4px -284px 20px 20px;
+$db_list: -4px -312px 23px 22px;
+$datepicker: -4px -342px 23px 22px;
+$popup_close: -4px -372px 23px 23px;
+$input_text: -4px -403px 24px 24px;
+$en: -4px -435px 26px 26px;
+$nl: -4px -469px 26px 26px;
+$input_password: -4px -503px 25px 27px;
+$tab_org_inactive: -4px -538px 49px 27px;
+$tab_org_active: -4px -573px 49px 27px;
+$tab_com_inactive: -4px -608px 35px 30px;
+$tab_com_active: -4px -646px 35px 30px;
+$arrow_mini_left: -4px -684px 18px 39px;
+$arrow_mini_right: -4px -731px 18px 39px;
+$close: -4px -778px 41px 43px;
+$arrow_small_left: -4px -829px 26px 48px;
+$arrow_small_right: -4px -885px 26px 48px;
+$logo: -4px -941px 179px 55px;
+$arrow_big_right: -4px -1004px 26px 58px;
+$arrow_big_left: -4px -1070px 26px 58px;
+$select-icons: -4px -1136px 23px 212px;
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+
+@function sprite-width($sprite) {
+  @return nth($sprite, 3);
+}
+
+@function sprite-height($sprite) {
+  @return nth($sprite, 4);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite) {
+  background-image: url('../img/sprite.png');
+  @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.icon {
+  background-image: url('../img/sprite.png');
+}
+

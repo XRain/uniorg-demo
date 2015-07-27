@@ -1,0 +1,3 @@
+mixin named_input(options)
+   span.named-input_title(id=options.id?'label_' + options.id:'') #{options.title}
+   input.input-gray.input_size_named(name=options.name, id=options.id?options.id:null, value=options.value?options.value:'', placeholder=options.placeholder?options.placeholder:null, class=options.inputClass?options.inputClass:'')

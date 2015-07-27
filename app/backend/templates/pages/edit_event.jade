@@ -1,0 +1,26 @@
+include ../kit/kit
+include ../event_options
+doctype html
+html
+    head
+        - var title = "Edit: " + page.event.eventName 
+        title #{title}
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#editEvent
+        div.content-wrapper
+            include ../header
+            div.content
+                div#update-event
+                    mixin event_options(page)
+                div#messages_popup.popup.hidden
+                    div.popup_inner.login-popup_wrapper
+                        div.popup-content
+                            div.popup-content_align
+                                a.popup_close
+                                div#message-box
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

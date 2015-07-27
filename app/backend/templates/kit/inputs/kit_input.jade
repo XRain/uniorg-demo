@@ -1,0 +1,12 @@
+mixin kit_input(options)
+    span.kit_input-container
+        i.kit_input_icon(class='kit_input_icon_' + options.type)
+        input.kit_input(
+            placeholder=options.placeholder,
+            id=options.id?options.id:'',
+            name=options.name?options.name:'',
+            class=options.type?'kit_input_' + options.type:''
+            type=options.type?options.type:'',
+            value=options.value?options.value:''
+            
+        )

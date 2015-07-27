@@ -1,0 +1,57 @@
+@mixin border_radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+@mixin shadow($dist, $blur, $spread, $color, $inset:null) {
+  -webkit-box-shadow: $inset $dist/2 $dist/2 $blur $spread $color;
+  -moz-box-shadow:    $inset $dist/2 $dist/2 $blur $spread $color;
+  box-shadow:         $inset $dist/2 $dist/2 $blur $spread $color;
+}
+
+@mixin center_align() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+}
+
+@mixin triple_dot {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin fixed-vertical-align($height) {
+  position: relative;
+  top: ($button_height / 2 - $height / 2);
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin break() {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin no_break() {
+  white-space: nowrap;
+}
+
+@mixin transition($prop, $time:1s, $option:null) {
+  -webkit-transition: $prop $time $option;
+  -moz-transition: $prop $time $option;
+  -o-transition: $prop $time $option;
+  transition: $prop $time $option;
+}

@@ -1,0 +1,58 @@
+include ../kit/kit
+include ../events_list
+doctype html
+html
+    head
+        title!= page.event.eventName
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#event
+        div.content-wrapper
+            include ../header
+            div.content
+
+                div.event-full
+                    - page.event.eventName = page.event.eventName.toUpperCase();
+                    h1 #{page.event.eventName}
+                        span.full-event-owner by 
+                            a(href='/orgs/get/?id=' + page.event.owner, target='_blank') #{page.event.ownerName}
+                            each host in page.event.coHosts
+                                a(href='/orgs/get/?id=' + host.id, target='_blank') #{host.name}
+                        span.full-event-category #{page.event.eventType}
+                        span.full-event-date #{page.event.eventDate}
+                    div.event-full_image
+                        img(src=page.event.image)
+                    div.about!= page.event.about.replace(/\r\n/g, '<br />')
+                    div.details
+                        span.common-detail
+                            -var fullDate = page.event.eventTime?page.event.eventDate + ', ' + page.event.eventTime:page.event.eventDate
+                            p.event-field_label #{page.i18n.date}
+                            p.event-field #{fullDate}
+                            
+                            p.event-field_label #{page.i18n.contact}
+                            p.event-field #{page.event.contact}
+                            
+                            p.event-field_label #{page.i18n.partCost}
+                            p.event-field #{page.event.partCost}
+                                i.euro &#8364
+                            
+                            p.event-field_label #{page.i18n.deadline}
+                            p.event-field #{page.event.regDeadline}
+                        span.company-details
+                            p.event-field_label #{page.i18n.audience}
+                            p.event-field #{page.event.eventTargetAud}
+                            
+                            p.event-field_label #{page.i18n.participants}
+                            p.event-field #{page.i18n[page.event.eventTargetNum]}
+                            
+                            p.event-field_label #{page.i18n.lang}
+                            p.event-field #{page.i18n[page.event.eventLang]}
+
+                div.events-list.similar-events
+                    if page.similar.length > 0
+                        h1 #{page.i18n.similarEvents}
+                        mixin events_list({events: page.similar})
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

@@ -1,0 +1,62 @@
+include ../kit/kit
+include ../events_list
+doctype html
+html
+    head
+        title!= page.org.name
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#org
+        div.content-wrapper
+            include ../header
+            div.content
+                div.org-full
+                    - page.org.name = page.org.name.toUpperCase();
+                    h1 #{page.org.name}
+                    span.img-wrapper
+                        img(alt='', src=page.org.image?page.org.image:'/static/img/no_img.png', height='250', width='250')
+                    span.contact
+                        h3 #{page.i18n.contact}
+                        if page.org.location
+                            span.contact-label #{page.i18n.loc}
+                            span.contact-field #{page.org.location}
+                            br
+                        if page.org.contactEmail
+                            span.contact-label #{page.i18n.email}
+                            span.contact-field #{page.org.contactEmail}
+                            br
+                        if page.org.phone
+                            span.contact-label #{page.i18n.tel}
+                            span.contact-field #{page.org.phone}
+                            br
+                        div.contacts-social
+                            if page.org.homepage
+                                a(href=page.org.homepage)
+                                    img(alt='', src='/static/img/icon_home.png')
+                            if page.org.facebook
+                                a(href=page.org.facebook)
+                                    img(alt='', src='/static/img/icon_facebook.png')
+                            if page.org.twitter
+                                a(href=page.org.twitter)
+                                    img(alt='', src='/static/img/icon_twitter.png')
+                            if page.org.google
+                                a(href=page.org.google)
+                                    img(alt='', src='/static/img/icon_google.png')
+                    span.org-details
+                        h3 #{page.i18n.dep}
+                        span.dep #{page.org.department}
+                        h3 #{page.i18n.type}
+                        span #{page.org.orgType}
+                        h3 #{page.i18n.vacancies}
+                        span
+                            a(href=page.org.vacanciesPage?page.org.vacanciesPage:null, class=page.org.vacanciesPage?'active':'') #{page.org.vacancies}
+                    div.about-org!= page.org.about.replace(/\r\n/g, '<br />')
+                    if page.userEvents.length > 0
+                        div.events-title #{page.i18n.events}
+                        mixin events_list({events: page.userEvents})
+
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

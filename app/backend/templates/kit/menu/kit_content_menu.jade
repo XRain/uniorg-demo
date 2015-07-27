@@ -1,0 +1,4 @@
+mixin kit_content_menu(options)
+    menu.content-menu
+       each entry in options.entries
+         span.menu-entry(id=entry.id?entry.id:'', class=entry.id == options.active?'menu-entry_active':'') #{entry.text}

@@ -1,0 +1,5 @@
+mixin date_picker(options)
+    div.kit_date-picker(class=options.size?'kit_date-picker_size_' + options.size:'', id=options.id ? 'dp_' + options.id : '')
+        input.datepicker-input(type='hidden' ,name=options.name?options.name:'', id=options.id?options.id:'', value=options.selectedDate?options.selectedDate:'')
+        span #{options.text}
+        i.date-icon

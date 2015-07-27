@@ -1,0 +1,32 @@
+mixin vacancies_list(options)
+   - var len = options.vacancies.length
+   if len > 0
+      each counter in [0, 1, 2, 3, 4, 5, 6, 7]
+         - var vacancy = (!!options.vacancies)?options.vacancies[counter]:null
+         if vacancy
+            span.vacancy-wrapper
+               a(href='/vacancies/get?id=' + vacancy._id)
+                  h2 #{vacancy.vacancyName}
+               if vacancy.fullTime
+                  span.event-category #{page.i18n?page.i18n.fullTime:options.i18n.fullTime}
+               else if vacancy.pastTime
+                  span.event-category #{page.i18n?page.i18n.pastTime:options.i18n.pastTime}
+               span.event-date #{vacancy.friendlyDate}
+               a.vacancy-owner(href='/orgs/get/?id=' + vacancy.owner) #{vacancy.ownerName}
+      if len > 8
+         span.more-event_container.hidden
+            each vacancy, i in options.vacancies
+               if i >= 8
+                  span.vacancy-wrapper
+                     a(href='/vacancies/get?id=' + vacancy._id)
+                        h2 #{vacancy.vacancyName}
+                     if vacancy.fullTime
+                           span.event-category #{page.i18n?page.i18n.fullTime:options.i18n.fullTime}
+                     else if vacancy.pastTime
+                        span.event-category #{page.i18n?page.i18n.pastTime:options.i18n.pastTime}
+                     span.event-date #{vacancy.friendlyDate}
+                     a.vacancy-owner(href='/orgs/get/?id=' + vacancy.owner) #{vacancy.ownerName}
+
+         a.more-events_switch More vacancies
+   else
+      p.message No results found!

@@ -1,0 +1,35 @@
+mixin kit_menu(page)
+    - var loggedIn = page.auth.loggedIn === '1';
+    menu.kit-menu
+        span.menu-wrapper
+            span.menu-links
+                a.nav-link(href="/", class=page.name === 'index'?'nav-link_active':'') #{page.i18n['home']}
+                a.nav-link(href="/orgs", class=page.name === 'orgs'?'nav-link_active':'') #{page.i18n['orgs']}
+                a.nav-link(href="/vacancies", class=page.name === 'vacancies'?'nav-link_active':'') #{page.i18n['mVacancies']}
+                a.nav-link(href="/contacts", class=page.name === 'contacts'?'nav-link_active':'') #{page.i18n['mContacts']}
+            span.userinfo
+                if (loggedIn)
+                    a.profile-link #{page.auth.username}
+                    span.profile-menu.hidden
+                        a.profile-menu-link(href="/personal/#!info") #{page.i18n.mySettings}
+                        br
+                        a.profile-menu-link(href="/personal/#!upload") #{page.i18n.uploadEvent}
+                        br
+                        a.profile-menu-link(href="/personal/#!events") #{page.i18n.menuEvents}
+                        br
+                        a.profile-menu-link(href="/personal/#!vacancies") #{page.i18n.menuVacancies}
+                        br
+                        a.profile-menu-link(href="/logout") #{page.i18n.logout}
+                else
+                    a.login-link Login
+
+            span.locale-switcher.nl(class=page.lang === 'nl'?"hidden":"")
+                i
+                p NL
+            span.locale-switcher.en(class=page.lang === 'en'?"hidden":"")
+                p EN
+                i
+            span.search_wrapper.menu-search_wrapper
+                form#menu-search(action='/search', method='POST')
+                    input.menu_search.search-inactive(placeholder="search..." name="searchText")
+                    i.search-button.search-button_inactive

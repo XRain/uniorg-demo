@@ -1,0 +1,5 @@
+mixin database_button(options)
+    div.kit_db-button(id=options.id?options.id:'')
+        a#show-all-evts(href='/events/search')
+            span #{options.text}
+            i.db-icon

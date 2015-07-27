@@ -1,0 +1,79 @@
+mixin common_search(options)
+   - var evtsLength= options.events.length
+   - var orgsLength= options.orgs.length
+   - var vacsLength= options.vacs.length
+   - var i18n = options.i18n?options.i18n:page.i18n 
+   
+   div.search-stat
+      if evtsLength > 0
+         span.search-stat_record Events
+            b #{evtsLength}
+      if orgsLength > 0
+         span.search-stat_record Organizations
+            b #{orgsLength}
+      if vacsLength > 0
+         span.search-stat_record Vacancies
+            b #{vacsLength}
+   
+   if evtsLength > 0
+      div.common-search_result.search-result_events
+         each counter in [0, 1, 2, 3]
+            - var event = (!!options.events)?options.events[counter]:null
+            if event
+               mixin event_item(event)
+         if evtsLength> 4
+            span.more-event_container.hidden
+               each event, i in options.events
+                  if i >= 4
+                     mixin event_item(event)
+            a.more-events_switch #{i18n.more}
+   if orgsLength > 0
+      div.common-search_result.search-result_orgs
+         each counter in [0, 1, 2, 3]
+            - var org = (!!options.orgs)?options.orgs[counter]:null
+            if org
+               mixin org_item(org)
+         if orgsLength> 4
+            span.more-event_container.hidden
+               each org, i in options.orgs
+                  if i >= 4
+                     mixin org_item(org)
+            a.more-events_switch #{i18n.more}
+   if vacsLength > 0
+      div.common-search_result.search-result_vacancies
+         each counter in [0, 1, 2, 3]
+            - var vacancy = (!!options.vacs)?options.vacs[counter]:null
+            if vacancy
+               mixin vac_item(vacancy, i18n)
+         if vacsLength> 4
+            span.more-event_container.hidden
+               each vacancy, i in options.vacs
+                  if i >= 4
+                     mixin vac_item(vacancy, i18n)
+            a.more-events_switch #{i18n.more}
+   if evtsLength == 0 && orgsLength == 0 && vacsLength == 0
+      p.message No results found!
+
+mixin event_item(event)
+   span.event-wrapper
+      a(target='_blank', href='/events/get?id=' + event._id)
+         img(height="90", width="90", src="#{event.image}")
+      a(target='_blank', href='/events/get?id=' + event._id)
+         h2 #{event.eventName}
+      span.event-category #{event.eventType}
+      br
+      span.event-date #{event.friendlyDate}
+      
+mixin org_item(org)
+   a(target='_blank', href='/orgs/get?id=' + org._id)
+      h2 #{org.name}
+      
+mixin vac_item(vacancy, i18n)
+   span.event-wrapper
+      a(target='_blank', href='/vacancies/get?id=' + vacancy._id)
+         h2 #{vacancy.vacancyName}
+      if vacancy.fullTime
+         span.event-category #{i18n.fullTime}
+      else if vacancy.pastTime
+         span.event-category #{i18n.pastTime}
+      span.event-date #{vacancy.friendlyDate}

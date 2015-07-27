@@ -1,0 +1,68 @@
+include ../kit/kit
+include ../cl_main_calendar
+include ../cl_org_events_list
+include ../cl_org_vacancies_list
+include ../kit/menu/kit_content_menu
+    
+// tabs
+include ../personal_tabs/info
+include ../personal_tabs/settings
+include ../personal_tabs/events
+include ../personal_tabs/vacancies
+include ../personal_tabs/upload
+doctype html
+html
+    head
+        title!= "UniOrg: Profile"
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#personal
+        div.content-wrapper
+            include ../header
+            div.content
+                - var menuEntries = [];
+                - if (!!page.user.confirmed) {
+                -    menuEntries = [{text: page.i18n.information, id: 'entry_info'}, {text: page.i18n.settings, id: 'entry_settings'}, {text: page.i18n.allEvents, id: 'entry_events'}, {text: page.i18n.vacancies, id: 'entry_vacancies'}, {text: page.i18n.uploadEvent, id: 'entry_upload'}];
+                -   } else {
+                -    menuEntries = [{text: page.i18n.information, id: 'entry_info'}, {text: page.i18n.settings, id: 'entry_settings'}, {text: page.i18n.allEvents, id: 'entry_events'}, {text: page.i18n.vacancies, id: 'entry_vacancies'}];
+                -}
+                mixin kit_content_menu({active: 'entry_info', entries: menuEntries})
+                mixin tab_info
+                mixin tab_settings
+                mixin tab_events
+                mixin tab_vacancies
+                if page.user.confirmed
+                    mixin tab_upload
+                div#delete-evt_popup.popup.hidden
+                    div.popup_inner.login-popup_wrapper
+                        div.popup-content
+                            div.popup-content_align
+                                a.popup_close
+                                form#delete-event_form(action='/events/delete', method='POST')
+                                    input(type='hidden', name='eventToDelete')
+                                    div.delete-confirmation
+                                        span.delete-question #{page.i18n.deleteQuestion}
+                                        mixin kit_button({size: 'n', text: page.i18n.yes, id: 'delete-confirm_yes'})
+                                        mixin kit_button({size: 'n', text: page.i18n.no, id: 'delete-confirm_no'})
+                div#delete-vac_popup.popup.hidden
+                    div.popup_inner.login-popup_wrapper
+                        div.popup-content
+                            div.popup-content_align
+                                a.popup_close
+                                form#delete-vacancy_form(action='/vacancies/delete', method='POST')
+                                    input(type='hidden', name='vacancyToDelete')
+                                    div.delete-confirmation
+                                        span.delete-question #{page.i18n.deleteQuestion}
+                                        mixin kit_button({size: 'n', text: page.i18n.yes, id: 'vac-delete-confirm_yes'})
+                                        mixin kit_button({size: 'n', text: page.i18n.no, id: 'vac-delete-confirm_no'})
+                div#messages_popup.popup.hidden
+                    div.popup_inner.login-popup_wrapper
+                        div.popup-content
+                            div.popup-content_align
+                                a.popup_close
+                                div#message-box
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

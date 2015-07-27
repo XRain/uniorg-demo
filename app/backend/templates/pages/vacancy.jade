@@ -1,0 +1,39 @@
+include ../kit/kit
+doctype html
+html
+    head
+        title!= 'Uniorg: ' + page.vacancy.vacancyName
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#vacancy
+        div.content-wrapper
+            include ../header
+            div.content
+                div.event-full
+                    h1 #{page.vacancy.vacancyName}
+                        if page.vacancy.fullTime
+                            span.event-category #{page.i18n.fullTime}
+                        else if page.vacancy.pastTime
+                            span.event-category #{page.i18n.pastTime}
+                        span.full-event-date #{page.vacancy.vacancyDate}
+                    
+                    div.details
+                        span.common-detail
+                            p.vacancy-field_label #{page.i18n.from}
+                            a.vacancy-field(target='_blank', href='/orgs/get/?id=' + page.vacancy.owner) #{page.vacancy.ownerName}
+
+                            p.vacancy-field_label #{page.i18n.website}
+                            a.vacancy-field(target='_blank', href=page.vacancy.vacanciesWebsite) #{page.vacancy.vacanciesWebsite}
+
+                            p.vacancy-field_label #{page.i18n.salary}
+                            p.vacancy-field #{page.vacancy.salaryFrom + '-' + page.vacancy.salaryTo}
+                                i.euro &#8364
+
+                            p.vacancy-field_label #{page.i18n.employment}
+                            p.vacancy-field #{page.vacancy.fullTime?page.i18n.fullTime:page.i18n.pastTime}
+                    div.about!= page.vacancy.about.replace(/\r\n/g, '<br />')
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

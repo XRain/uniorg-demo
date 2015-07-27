@@ -1,0 +1,36 @@
+mixin org_events_list(options)
+   - var len = options.events.length
+   if len > 0
+      each counter in [0, 1, 2, 3]
+         - var event = (!!options.events)?options.events[counter]:null
+         if event
+            mixin org_events_searchresult(event)
+      if len > 4
+         span.more-event_container.hidden
+            each event, i in options.events
+               if i >= 4
+                  mixin org_events_searchresult(event)
+                     
+         a.more-events_switch More events
+   else
+      p.message No results found!
+      
+mixin org_events_searchresult(event)
+   span.event-wrapper
+      a(href='/events/edit?id=' + event._id)
+         img(height="90", width="90", src="#{event.image}")
+      a(href='/events/edit?id=' + event._id)
+         h2 #{event.eventName}
+      span.event-category #{event.eventType}
+      br
+      span.event-date #{event.friendlyDate}
+      span.evt-stat.hidden
+      mixin event_controls(event._id, event.views, event.fbPostId)
+mixin event_controls(id, views, fbPostId)
+   span.event-controls
+      span.stats-info
+         input.stats-views(type='hidden', value=views)
+         input(type='hidden', value=fbPostId, name='postId')
+      a.event-control.edit-event(href='/events/edit/?id=' + id) #{page.i18n?page.i18n.editEvent:options.i18n.editEvent}
+      a.event-control.event-stat(href='#', data-evtId=id) #{page.i18n?page.i18n.eventStat:options.i18n.eventStat}
+      a.event-control.delete-event(href='#', data-evtId=id) #{page.i18n?page.i18n.deleteEvent:options.i18n.deleteEvent}

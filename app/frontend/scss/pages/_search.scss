@@ -1,0 +1,59 @@
+#search-filters {
+  input {
+    width: 756px;
+    display: inline-block;
+    margin: 56px 0 0 0;
+    padding: 0 6px 0 6px;
+    border: 1px solid $green-text;
+  }
+  
+  #search {
+    display: inline-block;
+    top: 13px;
+  }
+}
+#orgs-search-list {
+  #search-results {
+    margin-top: 7px;
+  }
+  .search-stat {
+    padding: 0 16px;
+    margin-bottom: 32px;
+  }
+}
+.search-stat_record {
+  @include roboto(12px, itallic, #606060);
+  b {
+    margin: 0 6px 0 2px;
+    color: $green_text;
+  }
+}
+.common-search_result {
+  border-bottom: 1px dashed #a7a7a7;
+}
+.search-result_orgs {
+  h2 {
+    margin: 16px 0;
+    @include roboto(28px, bold, $header_gray);
+  }
+}
+.search-result_vacancies {
+  padding: 20px 0 0 0;
+  border-bottom: none;
+  h2 {
+    margin: 0 0 5px 0;
+  }
+  .event-wrapper {
+    min-height: 80px;
+    * {
+      left: 0;
+    }
+  } 
+  .event-date {
+    width: 100px;
+    text-align: center;
+    position: relative;
+    top: 0 !important;
+    margin-left: 8px;
+  }
+}

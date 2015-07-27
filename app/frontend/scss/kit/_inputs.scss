@@ -1,0 +1,67 @@
+.kit_input-container {
+  display: inline-block;
+  position: relative;
+}
+
+.kit_input {
+  text-align: center;
+  padding-left: 29px; // for icon
+  outline:none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid $search_underline_color;
+  line-height: 40px;
+  @include roboto(16px, regular, $green_text)
+}
+
+.kit_input_icon{
+  display: block;
+  position: absolute;
+  top: 8px;
+  left: 0;
+  height: 27px;
+  width: 27px;
+  background: center no-repeat;
+}
+
+.kit_input_icon_title {
+  @include sprite($input_text);
+}
+
+.kit_input_icon_email {
+  @include sprite($input_email);
+}
+
+.kit_input_icon_password {
+  @include sprite($input_password);
+}
+
+.input-gray {
+  height: 42px;
+  line-height: 42px;
+  padding: 0 20px;
+  outline:none;
+  border: 1px solid #c5c5c5;
+  @include border_radius(4px);
+  @include roboto(16px, regular, $green_text);
+}
+
+.input-search {
+  height: 33px;
+  outline:none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid $gray_text;
+  @include roboto(16px, regular, $green_text);
+}
+
+.input_size_named {
+  width: 58px;
+}
+
+.named-input_title {
+  margin-right: 10px;
+  @include roboto(16px, regular, #cdcdcd);
+}

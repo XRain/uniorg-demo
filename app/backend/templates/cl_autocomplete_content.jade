@@ -1,0 +1,12 @@
+mixin selected_co_host(options)
+   span.selected-host_item(id='co-host_' + options.id)
+      input.input-gray(value=options.name, readonly='readonly')
+      button.filter-button.remove-host_button(id='remove-host_' + options.id) delete
+      input(type="hidden", name="host_" + options.id, value=options.name)
+   
+mixin host_autocomplete_items(options)
+   ul
+      if options.status == 'success'
+         each org in options.orgs
+            li
+               a.searchresult_item("data-id"=org._id, "data-name"=org.name) #{org.name}

@@ -1,0 +1,20 @@
+mixin org_list(options)
+   - var orgsQty = 0;
+   - for (k in options.orgs) {orgsQty++}
+   if !!options.orgs && orgsQty > 0
+      - var i = 1
+      each v, k in options.orgs
+         if k != 'totals'
+            span.org-list_title(class=options.key?'org-list_' + options.key + ' org-list_' + options.key + '_' + i:'') #{k}
+            if options.orgs.totals
+               span.vacancies-total #{options.orgs.totals[k] + ' vacancies'}
+            ul(class=options.key?'org-list_' + options.key + '_list' + i:'')
+               each org in v
+                  li
+                     a(href='/orgs/get/?id=' + org._id, target='_blank') #{org.name}
+                     if org.vacancies > 0 && options.key == 'vacancy'
+                        span.vacancies-link
+                           a(href=org.vacanciesPage?org.vacanciesPage:'/orgs/get/?id=' + org._id, target='_blank') #{org.vacancies + ' vacancies'}
+         - i++
+   else
+      p.message No results found!

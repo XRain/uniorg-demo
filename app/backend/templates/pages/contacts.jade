@@ -1,0 +1,30 @@
+include ../kit/kit
+doctype html
+html
+    head
+        title!= "Uniorg: Contacts"
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#contacts
+        div.content-wrapper
+            include ../header
+            div.content
+                form#contacts-message(action='/message', method='GET')
+                    h2 #{page.i18n.contacts.toUpperCase()}
+                    input.required.input-gray.input-contacts(name='contactName', placeholder=page.i18n.enterName)
+                    input.required.input-gray.input-contacts(name='contactEmail', placeholder=page.i18n.enterEmail)
+                    textarea.required(name='about', placeholder=page.i18n.enterMessage) 
+                    mixin kit_button({size: 'n', text: page.i18n.sendMessage, id: 'contacts-message_send_'})
+                    
+                div#message-success_popup.popup.hidden
+                    div.popup_inner.login-popup_wrapper
+                        div.popup-content
+                            div.popup-content_align
+                                a.popup_close
+                                    div.delete-confirmation
+                                        span.delete-question #{page.i18n.messageSuccess}
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

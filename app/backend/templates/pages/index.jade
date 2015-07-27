@@ -1,0 +1,53 @@
+include ../kit/kit
+include ../cl_main_calendar
+include ../events_list
+include ../cl_events_search_list
+
+doctype html
+html
+
+    head
+        title!= "UniOrg: Home"
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#index
+        div.content-wrapper
+            include ../big_header
+            div.content
+                div#calendar-wrapper.hidden
+                    - page.calendar.user = page.user
+                    mixin main_calendar(page.calendar)
+                div#cal-events-search
+                    span.org-filters
+                        form#cal-search-filters(action='/events/search', method='GET')
+                            input(name='sort', type='hidden', value='date')
+                            span.filters-wrapper
+                                span.calc-filters-label #{page.i18n.filterLabel.toUpperCase()}
+                                span.search_wrapper.cal-search_wrapper
+                                    input.input-search(name='calSearchText', placeholder=page.i18n.findEvt)
+                                    i#cal-evt-search.input-search_button
+                                span.cal-search_filters
+                                    mixin select_list({name: 'filterOrg', data: page.orgNames, hint: page.i18n.organization})
+                                    mixin select_list({name: 'filterType', data: page.structure.evtTypesFilter, hint: page.i18n.filterType})
+                                    mixin select_list({name: 'filterTargetAud', data: page.structure.evtTargetAudFilter, hint: page.i18n.filterAud})
+                                    mixin select_list({name: 'filterAudNumber', data: page.structure.evtTargetNumFilter, hint: page.i18n.filterNum})
+                                    mixin date_picker({text: page.i18n.datePicker, size: 'm', name: 'filterDatePicker'})
+                                    
+                            mixin calendar_button({text: page.i18n.eventsCalButton})
+                            span.sort-wrapper
+                                span.filters-label #{page.i18n.sortLabel}
+                                button#evt-sort-alphabet.filter-button #{page.i18n.alphabet}
+                                button#evt-sort-date.filter-button.filter-button_active #{page.i18n.datesort}
+
+                    div#cal-search-results
+                        if page.promo.length > 0
+                            mixin events_search_list({events: page.promo})
+                if page.promo.length > 0
+                    div.events-list.hidden
+                        h1 #{page.i18n.moreEvents}
+                        mixin events_list({events: page.promo})
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")

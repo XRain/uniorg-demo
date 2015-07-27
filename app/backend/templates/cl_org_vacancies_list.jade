@@ -1,0 +1,30 @@
+mixin org_vacancies_list(options)
+   - var len = options.vacancies.length
+   if len > 0
+      each counter in [0, 1, 2, 3]
+         - var vacancy = (!!options.vacancies)?options.vacancies[counter]:null
+         if vacancy
+            mixin list_item(vacancy, page.i18n?page.i18n:options.i18n)
+      if len > 4
+         span.more-event_container.hidden
+            each vacancy, i in options.vacancies
+               if i >= 4
+                  mixin list_item(vacancy, page.i18n?page.i18n:options.i18n)
+                     
+         a.more-events_switch More vacancies
+   else
+      p.message No results found!
+mixin vacancy_controls(id)
+   span.event-controls
+      a.event-control.edit-event(href='/vacancies/edit/?id=' + id) #{page.i18n?page.i18n.editEvent:options.i18n.editEvent}
+      a.event-control.delete-vacancy(href='#', data-vacId=id) #{page.i18n?page.i18n.deleteEvent:options.i18n.deleteEvent}
+mixin list_item(record, i18n)
+   span.event-wrapper
+      a(href='/vacancies/edit?id=' + record._id)
+         h2 #{record.vacancyName}
+      if record.fullTime
+         span.event-category #{i18n.fullTime}
+      else if record.pastTime
+         span.event-category #{i18n.pastTime}
+      span.event-date #{record.friendlyDate}
+      mixin vacancy_controls(record._id)

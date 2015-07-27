@@ -1,0 +1,184 @@
+//
+// Header menuenu
+//
+.kit-menu {
+  width: 100%;
+  height: $button_height;
+}
+.menu-wrapper {
+  display: block;
+  width: 728px;
+  height: $button_height;
+  position: relative;
+  left: 220px;
+  top: 9px;
+  
+}
+
+.locale-switcher {
+  display: inline-block;
+  cursor: pointer;
+  float: right;
+  i {
+    display: inline-block !important;
+    position: relative;
+    top: 8px;
+    left: 10px;
+    margin-right: 5px;
+    
+  }
+  p {
+    display: inline-block;
+    position: relative;
+    left: 12px;
+    @include roboto(12px, regular);
+  }
+}
+.locale-switcher.nl i {
+  @include sprite($nl);
+}
+.locale-switcher.en {
+  p {
+    left: 6px;
+  }
+  i {
+    @include sprite($en);
+  }
+}
+
+.userinfo {
+  text-align: center;
+  height: 57px;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+  top: 2px;
+}
+.userinfo a {
+  max-width: 188px;
+  min-width: 70px;
+  min-height: 18px;
+  display: inline-block;
+  text-decoration: underline;
+  cursor: pointer;
+  @include triple_dot;
+  @include roboto(16px, regular, #3ad083);
+}
+.userinfo .login-link {
+  text-decoration: none;
+}
+.menu-links {
+  height: 57px;
+  line-height: 32px;
+  display: inline-block;
+  a.nav-link {
+    display: inline-block;
+    padding: 0 5px;
+    margin-left: 1px;
+    text-decoration: none;
+    @include no_break;
+    @include border_radius(4px);
+    @include roboto(16px, regular, #828283);
+  }
+  a.nav-link_active {
+    border-bottom: 1px $green_text solid;
+    color: #fff;
+  }
+  a.nav-link:not(.nav-link_active):hover {
+    color: #fff;
+  }
+}
+.menu-search_wrapper {
+  display: inline-block;
+  max-width: 122px;
+  position: absolute;
+  right: 74px;
+  .menu_search {
+    display: inline-block;
+    background: none;
+  }
+  i {
+    display: inline-block !important;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+  }
+  i.search-button {
+    @include sprite($search);
+  }
+  i.search-button_inactive, {
+    @include sprite($search_inactive);
+  }
+  i.search-button_inactive:hover {
+    @include sprite($search);
+  }
+}
+#menu-search {
+  input {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+input.menu_search {
+  height: 33px;
+  width: 120px;
+  background-color: #000;
+  text-align: center;
+  outline:none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid $search_underline_color;
+  @include transition(width, 1s);
+  @include roboto(16px, regular, $green_text);
+}
+
+input.menu_search.search-inactive {
+  width: 0px;
+  border: none;
+}
+
+
+
+// Content menu
+
+.content-menu {
+  display: block;
+  width: 100%;
+  height: 36px;
+  background-color: #efefef;
+  margin: 90px 0 50px 0;
+  @include border_radius(2px);
+  .menu-entry {
+    position: relative;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 10px 0 10px;
+    padding: 0 14px 0 14px;
+    text-align: center;
+    @include roboto(15px, regular, #494949);
+    @include border_radius(2px);
+  }
+  .menu-entry_active {
+    color: #FFF !important;
+    background-color: $button_active_color;
+  }
+  .menu-entry_active:after {
+      content: '';
+      position: absolute;
+      right: 46%; top: 36px;
+      border: 4px solid transparent;
+      border-top: 8px solid $button_active_color;
+  }
+  .menu-entry:not(.menu-entry_active) {
+    cursor: pointer;
+  }
+
+  .menu-entry:not(.menu-entry_active):hover {
+    color: #FFF;
+    background-color: $button_active_color;
+  }
+
+}

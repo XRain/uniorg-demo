@@ -1,0 +1,164 @@
+#search-results {
+  li {
+    margin: 28px 28px;
+  }
+  li:before {
+    content: "• ";
+    color: $green_text;
+    font-size: 26px;
+    position: relative;
+    left: -18px;
+  }
+}
+.org-list_wrapper {
+  min-height: 720px;
+  a {
+    text-decoration: none;
+    @include roboto(22px, regular, $gray_text)
+  }
+  h1 {
+    width: 100%;
+    margin: 86px 0 60px 0;
+    text-align: center;
+    @include helvetica(48px, $gray_text);
+  }
+}
+.filters-label {
+  @include roboto(13px, regular, #757575)
+}
+.filter-button {
+  display: inline-block;
+  height: 27px;
+  border: 2px solid rgba(160, 160, 160, 0.5);
+  outline: none;
+  background-color: #fff;
+  padding: 0 6px;
+  margin: 0 3px;
+  @include border_radius(2px);
+  @include roboto(14px, regular, rgba(70, 70, 70, 0.5))
+}
+
+.filter-button:not(.filter-button_active) {
+  cursor: pointer;
+}
+
+.filter-button_active, .filter-button:not(.filter-button_active):hover {
+  border: none;
+  margin: 0 5px;
+  color: #fff;
+  background-color: $green_text;
+}
+#org-search-filters {
+  input {
+    width: 394px;
+    margin-left: 168px;
+  }
+}
+
+#search-results {
+  margin-top: 52px;
+}
+.org-list_title {
+  background-color: $green_text;
+  @include roboto(28px, bold, $gray_text);
+  padding: 8px 12px;
+  display: inline-block;
+  min-width: 28px;
+  text-align: center;
+}
+
+.org-list_department_1 {
+  background-color: #b9e410;
+}
+.org-list_department_list1 li:before{
+  color: #b9e410;
+}
+
+.org-list_department_2 {
+  background-color: #0ddbf3;
+}
+.org-list_department_list2 li:before{
+  color: #0ddbf3;
+}
+
+.org-list_department_3 {
+  background-color: #ef3570;
+}
+.org-list_department_list3 li:before{
+  color: #ef3570;
+}
+
+.org-list_department_4 {
+  background-color: #f3b90b;
+}
+.org-list_department_list4 li:before{
+  color: #f3b90b;
+}
+
+.org-list_department_5 {
+  background-color: #15f382;
+}
+.org-list_department_list5 li:before{
+  color: #15f382;
+}
+
+.org-list_department_6 {
+  background-color: #f3550f;
+}
+.org-list_department_list6 li:before{
+  color: #f3550f;
+}
+
+.org-list_department_7 {
+  background-color: #bb69e2;
+}
+.org-list_department_list7 li:before{
+  color: #bb69e2;
+}
+
+.org-list_department_8 {
+  background-color: #b9e410;
+}
+.org-list_department_list8 li:before{
+  color: #b9e410;
+}
+
+.org-list_department_9 {
+  background-color: #0ddbf3;
+}
+.org-list_department_list9 li:before{
+  color: #0ddbf3;
+}
+
+.org-list_department_10 {
+  background-color: #ef3570;
+}
+.org-list_department_list10 li:before{
+  color: #ef3570;
+}
+
+
+.org-list_vacancy {
+  background: none;
+  position: relative;
+  left: -12px;
+}
+.vacancies-total, .vacancies-link a {
+  text-decoration: none !important;
+  display: inline-block;
+  position: relative;
+  background-color: $green_text;
+  padding: 9px 12px;
+  @include roboto(13px, regular);
+  @include border_radius(3px)
+  
+}
+
+.vacancies-total {
+  top: -4px;
+  left: -11px;
+}
+.vacancies-link {
+  margin-left: 12px;
+  top: -3px;
+}

@@ -1,0 +1,582 @@
+#entry_upload {
+  float: right;
+  margin-right: 0;
+}
+
+.event-name_big {
+  width: 685px;
+  margin: 0 30px 42px 0;
+}
+textarea {
+  resize: none;
+  outline: none;
+  width: 100%;
+  min-height: 254px;
+  padding: 20px;
+  margin-bottom: 54px;
+  border: 1px solid #c5c5c5;
+  @include border_radius(4px);
+  @include roboto(16px, regular, $green_text);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+textarea[name="bannerText"] {
+  min-height: 85px;
+}
+
+i.euro {
+  position: relative;
+  top: 2px;
+  margin-left: 10px;
+  @include roboto(22px, regular, #cdcdcd);
+}
+
+.personal-container {
+  display: block;
+  width: 50%;
+  float: left;
+  input {
+    width: 80%;
+    margin-bottom: 16px;
+  }
+}
+.wide-container {
+  width: 100%;
+  margin-top: 8px;
+}
+.org-contacts {
+  position: absolute;
+}
+#update-settings_button {
+  margin: 0 auto;
+  position: relative;
+  bottom: -270px;
+}
+
+.event-image {
+  display: inline-block;
+  position: relative;
+  width: 432px;
+  margin-right: 82px;
+  .annotation {
+    display: block;
+    width: 172px;
+    margin-top: 16px;
+    line-height: 16px;
+    @include roboto(13px, regular, #cdcdcd);
+  }
+}
+.event-details .event-image {
+  margin-bottom: 54px;
+}
+.banner-image {
+  width: 530px;
+}
+
+#personal h1 , #update-vacancy h1, #update-event h1 {
+  margin-bottom: 30px;
+  @include roboto(20px, bold, $green_text)
+}
+
+.event-img_controls, .event-img_container {
+  display: inline-block;
+  height: 160px;
+}
+.event-img_controls {
+  float: right;
+}
+
+.event-contacts {
+  display: inline-block;
+  width: 432px;
+  position: absolute;
+  margin-bottom: 54px;
+  input {
+    width: 100%;
+    margin-bottom: 14px;
+  }
+}
+
+.kit_date-picker {
+  min-width: 146px;
+}
+
+#upload-event_img {
+}
+.divider {
+  display: block;
+  height: 52px;
+}
+.more-details {
+  a {
+    text-decoration: none;
+  }
+  .sbHolder {
+    margin-bottom: 16px;
+  }
+  label {
+    display: inline-block;
+    height: 36px;
+    line-height: 42px;
+    clear: both;
+    @include roboto(16px, regular, #cdcdcd);
+    .icheckbox_minimal {
+      float: left;
+    }
+  }
+  label.last {
+    margin-bottom: 54px;
+  }
+  .time-input {
+    width: 20px;
+  }
+}
+
+.co-hosts_container {
+  width: 432px;
+  display: block;
+  .co-hosts_selected {
+    margin: 0 0 30px 0;
+  }
+  .selected-host_item {
+    display: block;
+    position: relative;
+    margin: 4px 0;
+  }
+  .co-hosts_dropdown {
+    position: absolute;
+    width: 432px;
+  }
+  .remove-host_button {
+    position: absolute;
+    right: -68px;
+    top: 8px;
+    border: none;
+    margin: 0 5px;
+    color: #fff;
+    background-color: #21b469;
+  }
+  .input-gray {
+    width: 392px;
+  }
+  .incorrect {
+    color: #EF3F3F;
+  }
+  ul {
+    background-color: #fff;
+    border: solid 1px #c5c5c5;
+    left: -1px;
+    margin: 0;
+    padding: 0;
+    top: 42px;
+    width: 100%;
+    z-index: 20;
+    overflow-y: auto;
+    @include border_radius(4px);
+    li {
+      padding: 0 17px;
+    }
+    a {
+      cursor: pointer;
+      line-height: 27px;
+      height: 27px;
+      border-bottom: dotted 1px #515151;
+      display: block;
+      outline: none;
+      padding: 7px 0 7px 3px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      @include roboto(16px, regular, #9b9b9b);
+      text-decoration: none;
+    }
+    a:hover {
+      color: $green_text;
+    }
+  }
+}
+
+#upload-event_button, #update-event_button, #add-vacancy_button, #edit-vacancy_button {
+  margin: 0 auto;
+  margin-bottom: 54px;
+}
+
+
+#info {
+  min-height: 1108px;
+  .sbHolder {
+    width: 80%;
+    margin-bottom: 16px;
+    padding: 0 20px;
+  }
+}
+
+#label_vacancies-qty, #label_vacancies-url {
+  display: inline-block;
+  width: 175px;
+}
+#vacancies-qty {
+  text-align: center;
+  width: 30px;
+}
+#vacancies-url {
+  width: 385px;
+}
+#settings {
+  min-height: 370px;
+}
+
+
+.input-social {
+  display: block;
+  height: 44px;
+  margin-bottom: 16px;
+  input {
+    background: transparent;
+    padding-left: 45px;
+    width: 75%;
+  }
+}
+
+.input-homepage {
+  background: url('../img/icon_home.png') 5px center no-repeat;
+}
+.input-facebook {
+  background: url('../img/icon_facebook.png') 5px center no-repeat;
+}
+.input-twitter {
+  background: url('../img/icon_twitter.png') 5px center no-repeat;
+}
+.input-google {
+  background: url('../img/icon_google.png') 5px center no-repeat;
+}
+
+#update-info_button {
+  margin: 0 auto;
+  position: relative;
+  bottom: -1012px;
+}
+
+
+.audience-selector {
+  width: 432px;
+  background-color: #fff;
+  border: 1px solid #c5c5c5;
+  height: 42px;
+  display: inline-block;
+  margin-bottom: 12px;
+  @include border_radius(4px);
+  p {
+    margin-right: 10px;
+    position: relative;
+    top: 10px;
+  }
+  label, p {
+    @include roboto(16px, regular, #cdcdcd);
+    display: inline-block;
+  }
+  label {
+    margin: 10px 0;
+    height: 36px;
+    line-height: 28px;
+    clear: both;
+
+  }
+  i {
+    z-index: 10;
+    position: absolute;
+    right: 6px;
+    top: 15px;
+    width: 15px;
+    height: 13px;
+    @include sprite($select_arrow);
+  }
+  .icheckbox_minimal {
+    background-size: 24px;
+    float: left;
+  }
+  .icheckbox_minimal.checked {
+    background-size: 24px;
+  }
+  .audience-reminder {
+    cursor: pointer;
+    height: 24px;
+    margin: 10px 0 0 0;
+    position: relative;
+    top: -2px;
+  }
+  .audience-selector_wrapper {
+    z-index: 10;
+    cursor: pointer;
+    position: absolute;
+    display: inline-block;
+    width: 406px;
+    min-height: 24px;
+    padding: 0px 5px 0px 20px;
+    background-color: #fff;
+  }
+  .custom-checkbox_label {
+    width: 100%;
+  }
+  .icheckbox_minimal.disabled {
+    top: -6px;
+  }
+}
+.audience-selector_wrapper.open {
+  border: 1px solid #c5c5c5;
+  i {
+    @include sprite($select_arrow_active);
+  }
+}
+
+#events-search-form {
+  .event-wrapper,  {
+    position: relative;
+    border-bottom: 1px dashed #a7a7a7;
+    min-height: 112px;
+    margin-bottom: 20px;
+  }
+  .input-search {
+    margin-left: 190px;
+    width: 230px;
+  }
+} 
+
+
+.event-controls {
+  display: inline-block;
+  position: absolute !important;
+  left: 700px !important;
+  top: 90px;
+  a {
+    
+  }
+}
+
+.event-control {
+  margin-right: 52px;
+  @include roboto(14px, regular, #a7a7a7);
+}
+.event-control:hover, .event-stat.active {
+  text-decoration: underline !important;
+  color: #21b268;
+}
+
+.evt-stat {
+  display: block;
+  position: absolute !important;
+  left: 583px !important;
+  top: 0;
+  height: 50px;
+  width: 350px;
+  background-color: #f3f3f3;
+  padding: 16px 13px;
+  * {
+    box-sizing: border-box;
+  }
+  p {
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    position: relative;
+    left: 0 !important;
+    top: 10px;
+    @include roboto(16px, bold, $green_text)
+  }
+  span {
+    display: inline-block;
+    width: 33%;
+    padding-left: 24px;
+    @include roboto(14px, regular, #a7a7a7);
+  }
+  span:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    height: 24px;
+    left: -7px;
+  }
+}
+.stat-item_views {
+  padding-left: 31px !important;
+}
+.stat-item_views:before {
+  width: 38px;
+  background: url("../img/icon_views.png") no-repeat;
+}
+
+.stat-item_likes:before {
+  width: 25px;
+  background: url("../img/fb_icon_likes.png") no-repeat;
+}
+
+.stat-item_shares:before {
+  width: 24px;
+  background: url("../img/fb_icon_shares.png") no-repeat;
+}
+
+.event-control:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -24px;
+  top: -2px;
+  height: 22px;
+  width: 22px;
+}
+
+.edit-event:before {
+  @include sprite($icon_edit_event);
+}
+.delete-event:before {
+  @include sprite($icon_delete_evt);
+}
+
+.event-stat:before {
+  @include sprite($icon_evt_stat);
+}
+.event-stat:hover:before, .event-stat.active:before {
+  @include sprite($icon_evt_stat_act);
+}
+
+.edit-event:hover:before {
+  @include sprite($icon_edit_event_act);
+}
+.delete-event:hover:before {
+  @include sprite($icon_delete_evt_act);
+}
+
+#delete-evt_popup, #delete-vac_popup , #messages_popup{
+  width: 468px;
+  height: 610px;
+  h1 {
+    @include roboto(24px, medium, $green_text);
+    margin: 50px 0 40px 0;
+  }
+}
+
+
+.delete-confirmation , #message-box{
+  text-align: center;
+  min-height: 230px;
+  background-color: #fff;
+  .kit_button {
+    display: inline-block;
+    margin: 20px;
+  }
+}
+.delete-question, .error-message {
+  width: 100%;
+  display: block;
+  padding: 52px 0 42px 0;
+  @include roboto(18px, regular, #cdcdcd);
+}
+#message-box > p {
+  width: 100%;
+  display: block;
+  padding: 52px 0 42px 0;
+  @include roboto(18px, regular, #cdcdcd);
+}
+
+#update-event, #update-vacancy {
+  margin-top: 52px;
+}
+
+
+.confirmation-warn {
+  margin-bottom: 12px;
+  @include roboto(16px, regular, #EF3F3F)
+}
+
+#vacancies-search-form {
+  .input-search {
+    width: 260px;
+    margin-left: 280px;
+  }
+  #add-vacancy-switch {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+}
+#vacancy-list-switch, .backNavLink {
+  display: block;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 12px;
+  @include roboto(14px, regular, $green_text);
+}
+#vacancy-list-switch:before, .backNavLink:before {
+  content: "\2190";
+  margin-right: 6px;
+  display: inline-block;
+}
+
+#vacancies-search-results {
+  margin-top: 52px;
+  .event-wrapper {
+    position: relative;
+    border-bottom: 1px dashed #a7a7a7;
+    min-height: 112px;
+    margin-bottom: 20px;
+    min-height: 80px;
+  }
+  .event-controls {
+    top: 58px;
+    left: 812px !important;
+  }
+  .event-category {
+    width: 76px;
+    text-align: center;
+  }
+  .event-date {
+    width: 100px;
+    text-align: center;
+    position: relative;
+    top: 0;
+    margin-left: 8px;
+  }
+}
+
+.vacancy-type, .vacancy-contacts, .salary {
+  display: inline-block;
+}
+.vacancy-type, .vacancy-contacts {
+  height: 170px;
+}
+.vacancy-type {
+  width: 435px;
+  label {
+    display: inline-block;
+    height: 36px;
+    line-height: 42px;
+    margin-bottom: 20px;
+    clear: both;
+    @include roboto(16px, regular, #cdcdcd);
+    .icheckbox_minimal {
+      float: left;
+    }
+  }
+}
+
+.vacancy-contacts {
+  position: absolute;
+  span {
+    display: inline-block;
+    width: 100px;
+  }
+  input {
+    width: 370px;
+    margin-bottom: 12px;
+  }
+}
+
+.salary {
+  height: 125px;
+  width: 100%;
+}
+.salary span:nth-child(4) {
+  margin-left: 6px;
+}

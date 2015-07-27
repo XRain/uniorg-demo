@@ -1,0 +1,29 @@
+mixin events_list(options)
+    - var len = options.events.length
+    if len > 0
+        each counter in [0, 1, 2, 3]
+            - var event = options.events[counter]
+            if event
+                span.event-wrapper
+                    a(href='/events/get?id=' + event._id)
+                        img(height="90", width="90", src="#{event.image}")
+                    a(href='/events/get?id=' + event._id)
+                        h2 #{event.eventName}
+                    span.event-category #{event.eventType}
+                    br
+                    span.event-date #{event.friendlyDate}
+        if len > 4
+            span.more-event_container.hidden
+                each event, i in options.events
+                    if i >= 4
+                        span.event-wrapper
+                            a(href='/events/get?id=' + event._id)
+                                img(height="90", width="90", src="#{event.image}")
+                            a(href='/events/get?id=' + event._id)
+                                h2 #{event.eventName}
+                            span.event-category #{event.eventType}
+                            br
+                            span.event-date #{event.friendlyDate}
+            a.more-events_switch #{page.i18n.moreEvents}
+    else
+        p.message No results found!

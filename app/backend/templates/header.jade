@@ -1,0 +1,62 @@
+include kit/kit
+header.short
+   a.logo-link(href="/")
+      i.logo
+   mixin kit_menu(page)
+   div#login-popup.popup.hidden
+      div.popup_inner.login-popup_wrapper
+         div.popup-content
+            div.popup-content_align
+               a.popup_close
+
+               div.login.auth-window
+                  div.login-popup.login-popup_org
+                     h1 #{page.i18n.signin}
+                     form.login-form_org(action='/login', method='POST')
+                        input(name="type", type="hidden", value="org")
+                        input(name="password", type="hidden", value="org")
+                        mixin kit_input({placeholder: page.i18n.enterEmail, name: 'email', type: 'email'})
+                        mixin kit_input({placeholder: page.i18n.enterPassword, name: 'pass', type: 'password'})
+                        div.auth-messagebox.hidden
+
+                        mixin kit_button({size: 'login', text: page.i18n.signin, id: 'login-form_org_confirm'})
+                        div.login-toolbox
+                           a.forgot-password_switch.login_link #{page.i18n.forgotPassword}
+                           br
+                           p.login-reminder #{page.i18n.noAccount}
+                           a.signup_switch.login_link #{page.i18n.createOne}
+
+               div.register.auth-window.hidden
+                  div.login-popup.login-popup_org
+                     h1 #{page.i18n.signup}
+                     form.register-form_org
+                        input(name="type", type="hidden", value="org")
+                        mixin kit_input({placeholder: page.i18n.enterTitle, name: 'title', type: 'title'})
+                        mixin kit_input({placeholder: page.i18n.enterEmail, name: 'email', type: 'email'})
+                        mixin kit_input({placeholder: page.i18n.enterPassword, name: 'pass', type: 'password'})
+                        div.auth-messagebox.hidden
+                        mixin kit_button({size: 'login', text: page.i18n.signup, id: 'reg-form_org_confirm'})
+                        div.login-toolbox
+                           p.login-reminder #{page.i18n.loginInExist}
+                           a.signin_switch.login_link #{page.i18n.login}
+                  
+               div.recover-password.auth-window.hidden
+                  span.register-switcher_com.tab-switcher
+                  span.register-switcher_com.tab-switcher
+                  div.login-popup
+                     h1 #{page.i18n.passRecovery}
+                     form.recovery-form
+                        mixin kit_input({placeholder: page.i18n.enterEmail, name: 'email', type: 'email'})
+                        mixin kit_button({size: 'login', text: page.i18n.sendPasswd, id: 'recovery_confirm'})
+                        div.login-toolbox
+                           p.login-reminder #{page.i18n.noAccount}
+                           a.signup_switch.login_link #{page.i18n.createOne}
+               div.reg-success.auth-window.hidden
+                  span.register-switcher_com.tab-switcher
+                  span.register-switcher_com.tab-switcher
+                  div.login-popup
+                     h1 #{page.i18n.accCreated}
+                     div.login-toolbox
+                        p.login-reminder #{page.i18n.regSuccess1}
+                        a.signin_switch.login_link #{page.i18n.login}
+                        p.login-reminder #{page.i18n.regSuccess2}

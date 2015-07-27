@@ -1,0 +1,62 @@
+@font-face {
+  font-family: Roboto-bold;
+  src: url(../fonts/roboto-bold.ttf);
+}
+@font-face {
+  font-family: Roboto-regular;
+  src: url(../fonts/roboto-regular.ttf);
+}
+@font-face {
+  font-family: Roboto-medium;
+  src: url(../fonts/roboto-medium.ttf);
+}
+@font-face {
+  font-family: Roboto-light;
+  src: url(../fonts/roboto-light.ttf);
+}
+@font-face {
+  font-family: Roboto-itallic;
+  src: url(../fonts/roboto-italic.ttf);
+}
+@font-face {
+  font-family: Roboto-mediumitallic;
+  src: url(../fonts/roboto-mediumItalic.ttf);
+}
+@font-face {
+  font-family: Socialico;
+  src: url(../fonts/socialico.ttf);
+}
+
+@font-face {
+  font-family: Helvetica-gyro;
+  src: url(../fonts/texgyreheroscn-bold.otf);
+}
+@font-face {
+  font-family: Airport;
+  src: url(../fonts/airport.otf);
+}
+
+
+@mixin roboto($size, $family, $color:#fff) {
+  font-family: Roboto- + $family;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin socialico($size, $color:#fff) {
+  font-family: Socialico;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin helvetica($size, $color:#fff) {
+  font-family: Helvetica-gyro;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin airport($size, $color:#fff) {
+  font-family: Airport;
+  font-size: $size;
+  color: $color;
+}

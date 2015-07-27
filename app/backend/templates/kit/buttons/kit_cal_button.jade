@@ -1,0 +1,5 @@
+mixin calendar_button(options)
+    div.kit_db-button(id=options.id?options.id:'')
+        a#show-cal-view(href='#')
+            span #{options.text}
+            i.cal-button

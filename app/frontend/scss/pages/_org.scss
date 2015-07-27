@@ -1,0 +1,93 @@
+.org-full{
+  h1 {
+    border-bottom: 1px solid #26292a;
+    line-height: 90px;
+    margin-bottom: 10px;
+    @include helvetica(40px, $green_text)
+  }
+  h3 {
+    margin-top: 10px;
+    @include roboto(18px, bold, $gray_text)
+  }
+
+  .org-details {
+    position: absolute;
+    display: inline-block;
+    height: 252px;
+    width: 300px;
+    span {
+      display: inline-block;
+      position: relative;
+      top: 10px;
+      margin-bottom: 16px;
+      @include roboto(16px, light, $gray_text);
+    }
+    .dep {
+      background-color: #b9e410;
+      padding: 6px 8px;
+    }
+    a, a:hover {
+      text-decoration: none !important;
+      color: $gray_text !important;
+    }
+    a.active:hover {
+      text-decoration: underline !important;
+    }
+    a.active {
+      color: $green_text !important;
+    }
+  }
+
+
+  .contact {
+    display: inline-block;
+    height: 250px;
+    width: 300px;
+    h3 {
+      margin-bottom: 24px;
+    }
+  }
+  .contact-label, .contact-field {
+    display: inline-block;
+    line-height: 26px;
+    @include roboto(16px, light, #7f7f7f);
+  }
+  .contact-label {
+    float: left;
+    margin-right: 7px;
+    width: 20%;
+    white-space: nowrap;
+  }
+  .contact-field {
+    width: 75%;
+    margin-right: 5px;
+    white-space: normal;
+    word-break: break-all;
+  }
+
+  .contacts-social {
+    margin-top: 52px;
+    img{
+      margin-right: 12px;
+    }
+  }
+
+  .about-org {
+    clear: both;
+    width: 100%;
+    margin: 20px 0;
+    min-height: 80px;
+    @include roboto(22px, regular, #808080);
+  }
+
+  .events-title {
+    border-bottom: 1px solid #26292a;
+    line-height: 90px;
+    margin-bottom: 10px;
+    @include helvetica(40px, $gray_text)
+  }
+  .img-wrapper {
+    float: left;
+    margin-right: 52px;
+  }
+}

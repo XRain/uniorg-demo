@@ -1,0 +1,95 @@
+#vacancies-list {
+  h1 {
+    width: 100%;
+    margin: 86px 0 30px 0;
+    text-align: left;
+    border-bottom: 2px solid #000;
+    font-family: Helvetica-gyro;
+    font-size: 48px;
+    color: $gray_text;
+  }
+}
+#vac-search {
+  left: 897px;
+  top: 4px;
+  height: 42px;
+  width: 49px;
+  position: absolute;
+  cursor: pointer;
+  background: url("../img/search-icon.png") no-repeat;
+}
+
+.vac-search_wrapper {
+  position: relative;
+  padding: 7px 0 7px 10px;
+  width: 947px;
+  height: 35px;
+  display: block;
+  margin-bottom: 20px;
+  background-color: #efefef;
+}
+.sort-wrapper {
+  float: right;
+  position: relative;
+  top: 2px;
+}
+
+#vacancy-search-filters {
+  input[name="vacancySearchText"] {
+    border-bottom: none;
+    padding: 0 7px;
+    width: 863px;
+
+  }
+}
+
+.filters-wrapper {
+  .sbHolder {
+    width: 250px;
+    height: 30px;
+    display: inline-block;
+    margin-right: 12px;
+  }
+  .sbHolder:last-child {
+    width: 145px;
+  }
+  .sbToggle {
+    height: 30px;
+  }
+  .sbSelector {
+    line-height: 30px;
+    height: 30px;
+  }
+  .filters-label {
+    position: relative;
+    top: -12px;
+  }
+}
+.vacancy-wrapper {
+  min-height: 120px !important;
+  h2 {
+    margin: 0px 0 16px 0 !important;
+  }
+  .event-category {
+    width: 76px;
+    text-align: center;
+  }
+  .event-date {
+    width: 100px;
+    text-align: center;
+    position: relative;
+    top: 0 !important;
+    margin-left: 8px;
+  }
+  .vacancy-owner {
+    margin-left: 10px;
+    left: 20px !important;
+    @include roboto(14px, itallic, #818181)
+  }
+  .vacancy-owner:hover {
+    text-decoration: underline;
+  }
+}
+#search-results .more-events_switch {
+  font-size: 16px;
+}

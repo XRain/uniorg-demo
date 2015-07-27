@@ -1,0 +1,89 @@
+include ./cl_autocomplete_content
+mixin event_options(page)
+   - var editMode = !!page.event;
+   - var modeKey = editMode ? 'update' : 'add';
+   - var formId = modeKey + '-event_form';
+   form#upload-photo(enctype = 'multipart/form-data',action = '/upload/photo', method = 'post')
+      input#event-img-input.hidden(type='file')
+   form#upload-banner(enctype = 'multipart/form-data',action = '/upload/banner', method = 'post')
+      input#banner-img-input.hidden(type='file')
+   form(id=formId, action='/events/' + modeKey, method='POST')
+      if editMode
+         input(type='hidden', name='eventId', value=page.event._id)
+      input.required.input-gray.event-name_big(name='eventName', placeholder=page.i18n.enterEventName, value=editMode ? page.event.eventName:null)
+      mixin date_picker({text: editMode?page.event.eventFriendlyDate:page.i18n.datePicker, size: 'l', name: 'eventDate', selectedDate: editMode?page.event.eventDate:null})
+      div.event-details
+         span.event-image
+            h1 #{page.i18n.image}
+            span#event-img-container.event-img_container
+               img(src=editMode && page.event.image ? page.event.image : '/static/img/no_img.png')
+            span.event-img_controls
+               input#event-img-path(type='hidden' name='image', value=editMode && page.event.image ? page.event.image : '/static/img/no_img.png')
+               mixin kit_button({size: 'n', text: page.i18n.uploadImg, id: 'upload-event_img'})
+               p.annotation #{page.i18n.imgTypes}
+               p.annotation #{page.i18n.imgProblemsWarn}
+         span.event-contacts
+            h1 #{page.i18n.contactInfo}
+            input.required-group.input-gray.input_size_m(name='email', placeholder=page.i18n.enterEmail, value=editMode ? page.event.email : null)
+            input.required-group.input-gray.input_size_m(name='phone', placeholder=page.i18n.enterPhone, value=editMode ? page.event.phone : null)
+            input.required-group.input-gray.input_size_m(name='location', placeholder=page.i18n.enterLocation, value=editMode ? page.event.location : null)
+         span.event-image.banner-image
+            h1 #{page.i18n.bannerImgTitle}
+            span#banner-img-container.event-img_container
+               img(src=editMode && page.event.bannerImage ? page.event.bannerImage : '/static/img/no_img.png', height='245', width='330')
+            span.event-img_controls
+               input#banner-img-path(type='hidden' name='bannerImage', value=editMode && page.event.bannerImage ? page.event.bannerImage : '')
+               mixin kit_button({size: 'n', text: page.i18n.uploadImg, id: 'upload-banner_img'})
+               p.annotation #{page.i18n.bannerImgLabel}
+               p.annotation #{page.i18n.bannerImgHint}
+         div.more-details
+            span.named-input_title #{page.i18n.startTime}
+            input.time-input.input-gray(name="hours", maxlength="2", value=editMode && page.event.eventTime ? page.event.eventTime.split(':')[0] : '')
+            | :
+            input.time-input.input-gray(name="minutes", maxlength="2", value=editMode && page.event.eventTime ? page.event.eventTime.split(':')[1] : '')
+            br
+            br
+            mixin named_input({title: page.i18n.partCost, name: 'partCost', value: editMode ? page.event.partCost : null})
+            i.euro &#8364
+            br
+            br
+            span.named-input_title #{page.i18n.deadline}
+            mixin date_picker({text: editMode ? page.event.friendlyDeadline:page.i18n.datePicker, size: 'l', name: 'regDeadline', selectedDate: editMode ? page.event.regDeadline : null})
+            span.divider
+            h1 #{page.i18n.moreEventDetail}
+            mixin select_list({name: 'eventType', data: page.structure.evtTypes, hint: page.i18n.chooseEvtType, selected: editMode ? page.event.eventType : null})
+            mixin select_list({name: 'eventLang', data: page.structure.evtLangs, hint: page.i18n.chooseLang, selected: editMode ? page.event.eventLang : null})
+            span.audience-selector
+               span.audience-selector_wrapper
+                  i
+                  label.audience-reminder #{page.i18n.chooseTargetAud}
+                  span.aud-inner.hidden
+                     if editMode
+                        -var selectedAuditories = page.event.eventTargetAud.split(', ')
+                        - var box 
+                        each box in page.structure.evtTargetAud
+                           -var boxState = false;
+                           -for (var i=0, len=selectedAuditories.length; i<len; i++) {
+                           -    if (selectedAuditories[i] === box.title) {
+                           -       boxState = true;
+                           -    }
+                           -}
+                           mixin checkbox({title: box.title, name: box.name, checked: state?'checked': null})
+                     else
+                        each box in page.structure.evtTargetAud
+                           mixin checkbox({title: box.title, name: box.name})
+            mixin select_list({name: 'eventTargetNum', data: page.structure.evtTargetNum, hint: page.i18n.chooseTargetNum, selected:editMode && page.event.eventTargetNum?page.event.eventTargetNum:null})
+            h1 #{page.i18n.MoreSponsors}
+            span.co-hosts_container
+               div.co-hosts_selected
+                  if editMode
+                     each host in page.event.coHosts
+                        mixin selected_co_host({id: host.id, name: host.name})
+               input.input-gray(placeholder=page.i18n.sponsorSearch, id='sponsorSearch')
+               div.co-hosts_dropdown.hidden
+            span.divider
+            h1 #{page.i18n.about}
+            textarea.required(name='about', placeholder=page.i18n.enterEvtInfo) #{editMode ? page.event.about : null}
+            h1 #{page.i18n.bannerAbout}
+            textarea.required(maxlength='400', name='bannerText', placeholder=page.i18n.bannerPlaceholder) #{editMode ? page.event.bannerText : null}
+         mixin kit_button({size: 'n', text: page.i18n.save, id: editMode ? 'update-event_button' : 'upload-event_button'})

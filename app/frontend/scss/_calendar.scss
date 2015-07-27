@@ -1,0 +1,471 @@
+div.calendar {
+  display: block;
+  position: relative;
+  text-align: center;
+  width: 1195px;
+  height: 1260px;
+  left: -140px;
+}
+div.year {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  @include helvetica(22px, #afb5a8);
+}
+
+.months {
+  width: 100%;
+  position: relative;
+}
+
+a.calendar_prev-month, a.calendar_next-month {
+  display: block;
+  z-index: 200;
+  position: absolute;
+  width: 26px;
+  height: 58px;
+  cursor: pointer;
+}
+
+a.calendar_prev-month {
+  left: 0px;
+  @include sprite($arrow_big_left);
+}
+
+a.calendar_next-month {
+  right: 0px;
+  @include sprite($arrow_big_right);
+}
+
+a.calendar_prev-month:hover {
+  height: 48px;
+  top: 5px;
+  background-repeat: no-repeat;
+  @include sprite($arrow_small_left);
+}
+a.calendar_next-month:hover {
+  height: 48px;
+  top: 5px;
+  background-repeat: no-repeat;
+  @include sprite($arrow_small_right);
+}
+
+.months-gradient {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 58px;
+  z-index: 100;
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-8 */
+}
+.months p {
+  display: inline-block;
+  width: 260px;
+  @include helvetica(55px, #4c5246);
+}
+.months-wrapper p:first-child {
+  float: left;
+}
+.months-wrapper p:last-child {
+  float: right;
+}
+
+div.days {
+  oferflow: hidden;
+}
+
+.week-days {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  height: 24px;
+  margin: 56px 0 10px 0;;
+  p {
+    display: inline-block;
+    width: 162px;
+    margin: 0 4px;
+    @include airport(28px, $green_text)
+  }
+}
+
+.cal-day {
+  display: inline-block;
+  position: relative;
+  height: 162px;
+  width: 162px;
+  margin: 4px;
+  background-color: #eaeaea;
+}
+
+.cal-day p {
+  display: block;
+  position: relative;
+  top: 50px;
+  height: 64px;
+  width: 64px;
+  margin: 0 auto;
+  cursor: pointer;
+  line-height: 64px;
+  background: rgba(11, 5, 103, 0.3);
+  @include airport(40px)
+}
+
+.cal-day:not(.empty) p:hover {
+  background: rgba(11, 5, 103, 0.5);
+}
+
+.cal-day.empty p {
+  cursor: auto;
+  background: none;
+  color: #4c5246;
+}
+
+.cal-day.empty.cal-day_inactive p {
+  cursor: auto;
+  background: none;
+  color: #a8aea1;
+}
+.cal-day img {
+  position: absolute;
+  left: 0;
+}
+
+.event-thumbnail {
+  width: 162px;
+  height: 162px;
+  overflow: hidden;
+  display: block;
+  position: absolute;
+}
+.event-thumbnail_wrapper {
+  display: block;
+  position: relative;
+  width: 230px;
+  height: 230px;
+  overflow: hidden;
+  transform: rotate(45deg);
+  border: 1px solid #000;
+  img {
+    position: relative;
+    top: 0px;
+    left: -10px;
+    transform: rotate(-45deg);
+  }
+}
+.event-thumb_0 {
+  left: 47px;
+  top: 47px;
+  img {
+    top: 34px;
+    left: -115px;
+  }
+}
+.event-thumb_1 {
+  top: -116px;
+  left: -116px;
+  img {
+    top: 34px;
+    left: 115px;
+  }
+  
+}
+.event-thumb_2 {
+  top: 47px;
+  left: -116px;
+  img {
+    top: -81px;
+    left: 0px;
+  }
+}
+
+input.search_big {
+  width: 416px;
+  float: left;
+  margin-left: 8px;
+}
+
+input.search_big.active {
+  border-bottom: 1px solid $search_underline_color;
+}
+
+i.input-search_button {
+  display: inline-block !important;
+  width: 19px;
+  height: 20px;
+  position: relative;
+  top: 6px;
+  left: -26px;
+  @include sprite($search_inactive);
+}
+
+i.input-search_button.active {
+  cursor: pointer;
+  @include sprite($search);
+}
+
+
+.calendar-controls {
+  text-align: left;
+  position: relative;
+  .search_big {
+  }
+  .input-search_button {
+    
+  }
+}
+
+div.calendar .kit_date-picker{
+  padding: 4px 8px;
+  float: right;
+  position: relative;
+  top: 0px;
+  right: 7px;
+  i {
+    top:2px;
+    left: 4px;
+  }
+}
+
+
+.day-events {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -325px;
+  margin-left: -255px;
+  min-height: 575px;
+  max-height: 650px;
+  width: 450px;
+  z-index: 3000;
+  background-color: #fff;
+  @include shadow(2px, 1px, 1px, rgba(100, 100, 100, 0.5) );
+}
+.day-events_close {
+  display: block;
+  right: 0;
+  position: absolute;
+  height: 41px;
+  width: 43px;
+  cursor: pointer;
+  @include sprite($close);
+}
+
+.day-events_left, .day-events_right {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 26px;
+  height: 48px;
+}
+
+.day-events_left {
+  left: 30px;
+  @include sprite($arrow_small_left);
+}
+.day-events_right {
+  right: 30px;
+  @include sprite($arrow_small_right);
+}
+
+.day-event {
+  display: block;
+  margin: 0 auto;
+  width: 340px;
+  a {
+    text-decoration: none;
+  }
+  span {
+    text-align: left;
+    display: block;
+    width: 100%;
+  }
+  img{
+    position: static;
+  }
+  .event-month-title, .event-day-title {
+    text-align: center;
+  }
+  .event-month-title {
+    margin: 8px 0 2px 0;
+    @include airport(40px, #71756d);
+  }
+  .event-day-title {
+    margin-bottom: 14px;
+    @include roboto(18px, bold, #a5a5a5);
+  }
+  .day-event_title {
+    margin: 12px 0 2px 0;
+    @include triple_dot();
+    @include roboto(20px, bold, #18b063);
+  }
+  .day-event_org-name {
+    margin-bottom: 18px;
+    @include roboto(18px, bold, #a5a5a5);
+    a, a:visited {
+      margin-right: 6px;
+      @include roboto(16px, bold, #a5a5a5);
+    }
+    a:after {
+      content: ",";
+    }
+    a:last-child:after {
+      content: "";
+    }
+  }
+  .day-event_about {
+    margin-bottom: 50px;
+    @include roboto(16px, regular, #000);
+  }
+}
+
+
+.caledar-filters {
+  width: 250px;
+  display: inline-block;
+  z-index: 1000;
+  position: absolute;
+  left: 740px;
+  p {
+    margin-right: 10px;
+    position: relative;
+    top: 10px;
+  }
+  label, p {
+    @include roboto(16px, regular, #cdcdcd);
+    display: inline-block;
+  }
+  label {
+    margin: 10px 0;
+    height: 24px;
+    width: 100%;
+    line-height: 24px;
+    clear: both;
+  }
+  i {
+    z-index: 10;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    width: 15px;
+    height: 13px;
+    @include sprite($select_arrow);
+  }
+  .icheckbox_minimal {
+    background-size: 24px;
+    float: left;
+  }
+  .icheckbox_minimal.checked {
+    background-size: 24px;
+  }
+  .filters-reminder {
+    cursor: pointer;
+    margin: 10px 0 0 0;
+    position: relative;
+    top: -6px;
+  }
+  .calendar-filters_wrapper {
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    width: 170px;
+    min-height: 24px;
+    border: 2px solid #1bb471;
+    padding: 0 10px;
+    background-color: #fff;
+  }
+}
+
+.calendar-filters_wrapper.open i {
+  @include sprite($select_arrow_active);
+}
+
+
+#cal-events-search {
+  display: block;
+  width: 960px;
+  min-height: 960px;
+  margin: 20px 0 0 0;
+  .org-filters {
+    position: relative;
+  }
+  .filters-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .cal-search_wrapper {
+    position: absolute;
+    top: -8px;
+    left: 340px;
+    width: 650px;
+  }
+  .cal-search_filters {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 922px;
+    background-color: #efefef;
+    padding: 15px;
+    .sbHolder {
+      width: 180px;
+    }
+    .kit_date-picker {
+      position: absolute;
+      height: 32px;
+      line-height: 32px;
+      i {
+        top: 4px;
+      }
+    }
+  }
+  .calc-filters-label {
+    display: block;
+    position: absolute;
+    height: 42px;
+    width: 170px;
+    line-height: 42px;
+    text-align: center;
+    background-color: #efefef;
+    @include roboto(16px, regular, $gray_text);
+  }
+}
+#cal-search-filters {
+  .kit_db-button {
+    position: relative;
+    left: 620px;
+    top: 124px;
+  }
+  .sort-wrapper {
+    float: none;
+    position: absolute;
+    top: 130px;
+    left: 0;
+  }
+}
+input[name="calSearchText"] {
+  width: 609px;
+}
+#cal-search-results {
+  margin-top: 200px;
+  min-height: 600px;
+}
+#show-all-evts {
+  text-decoration: none;
+}
+#back-to-list {
+  margin: 20px 0 0 0;
+}
+footer.fixed {
+  position: relative;
+}

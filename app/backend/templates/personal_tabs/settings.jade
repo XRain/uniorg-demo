@@ -1,0 +1,13 @@
+include ../kit/kit
+mixin tab_settings
+   div#settings.content-menu_tab.hidden
+      form#personal-settings(action='/users/update-settings', method='POST')
+         span.personal-container.pass-recovery
+            h1 #{page.i18n.changePasswd}
+            input.input-gray.change-old(type='password', name='oldPassword', placeholder=page.i18n.oldPassword)
+            input.input-gray.change(type='password', name='newPassword', placeholder=page.i18n.newPassword)
+            input.input-gray.change-confirm(type='password', placeholder=page.i18n.repeatPassword)
+         span.personal-container.email-change
+            h1 #{page.i18n.changeEmail}
+            input.input-gray.required(name='newEmail', placeholder=page.i18n.newEmail, value=page.user.email)
+         mixin kit_button({size: 'n', text: page.i18n.save, id: 'update-settings_button'})

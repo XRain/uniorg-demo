@@ -1,0 +1,5 @@
+mixin select_list(options)
+   select.custom-select(name=options.name, id=options.id?options.id:'')
+      option(value="", disabled='', selected=options.selected?null:'') #{options.hint}
+      each record in options.data
+         option(value=record.name, selected=options.selected == record.name?'':null) #{record.title}

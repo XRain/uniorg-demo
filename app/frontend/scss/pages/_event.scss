@@ -1,0 +1,110 @@
+
+.event-full_image {
+  float: left;
+  text-align: center;
+  margin-bottom: 24px;
+  margin-right: 26px;
+}
+
+.event-full {
+  h1 {
+    position: relative;
+    width: 860px;
+    padding-right: 100px;
+    border-bottom: 1px solid #26292a;
+    line-height: 90px;
+    margin-bottom: 10px;
+    @include helvetica(40px, $green_text)
+  }
+  .about {
+    width: 100%;
+    min-height: 230px;
+    margin-bottom: 42px;
+    line-height: 34px;
+    @include roboto(28px, regular, $gray_text);
+  }
+  .details {
+    width: 100%;
+    border: 4px solid $green_text;
+    padding: 24px 54px;
+    min-height: 110px;
+    margin-bottom: 20px;
+    p {
+      display: inline-block;
+      white-space: nowrap;
+      margin: 8px 0;
+    }
+    .event-field_label {
+      width: 140px;
+      @include roboto(13px, regular, #9c9c9c);
+    }
+    .event-field {
+      width: 350px;
+      @include roboto(13px, regular, $gray_text);
+    }
+
+    .common-detail, .company-details {
+      display: inline-block;
+    }
+    .common-detail {
+      width: 60%;
+      overflow: hidden;
+    }
+
+    .company-details {
+      position: absolute;
+      width: 40%;
+      .event-field {
+        width: 160px;
+      }
+    }
+  }
+}
+
+.event-field_label_cv {
+  padding: 4px 16px;
+  background-color: $green_text;
+  @include roboto(13px, regular)
+}
+
+.similar-events {
+  left: 0 !important;
+  h1 {
+    color: $gray_text !important;
+  }
+}
+
+.full-event-category, .full-event-date {
+  line-height: 18px;
+  position: absolute;
+  right: 0;
+  padding: 4px 12px;
+  @include roboto(14px, regular)
+}
+.full-event-category {
+  top: 30px;
+  display: inline-block;
+  background-color: #484848;
+}
+.full-event-date {
+  top: 60px;
+  display: inline-block;
+  background-color: $green_text;
+}
+.full-event-owner {
+  position: absolute;
+  left: 2px;
+  top: 30px;
+  @include roboto(18px, bold, #a5a5a5);
+  a, a:visited {
+    margin-right: 6px;
+    text-decoration: none;
+    @include roboto(18px, bold, #a5a5a5);
+  }
+  a:after {
+    content: ",";
+  }
+  a:last-child:after {
+    content: "";
+  }
+}

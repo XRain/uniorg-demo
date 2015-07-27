@@ -1,0 +1,13 @@
+mixin tab_events
+   div#events.content-menu_tab.hidden
+      span.org-filters
+         form#events-search-form(action='/events/get-own', method='GET')
+            input(name='sort', type='hidden', value='eventDate')
+            span.filters-label #{page.i18n.sortLabel}
+            button#filter-eventDate.filter-button.filter-button_active(data-form="events-search-form") #{page.i18n.date}
+            button#filter-eventType.filter-button(data-form="events-search-form") #{page.i18n.types}
+            button#filter-alphabet.filter-button(data-form="events-search-form") #{page.i18n.alphabet}
+            input.input-search(name='searchText', placeholder=page.i18n.findEvt, data-form="events-search-form")
+            i#event-search.input-search_button
+            div#search-results
+               mixin org_events_list({events: page.events})

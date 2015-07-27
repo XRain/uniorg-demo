@@ -1,0 +1,50 @@
+#contacts-message {
+  h2 {
+    width: 100%;
+    margin: 86px 0 30px 0;
+    text-align: center;
+    @include helvetica(48px, $gray_text)
+  }
+  .input-contacts {
+    width: 428px;
+    margin-bottom: 26px;
+  }
+  .input-contacts:nth-child(3) {
+    float: right;
+  }
+  textarea {
+    width: 920px;
+  }
+  #contacts-message_send_ {
+    margin: 0 auto;
+    position: relative;
+  }
+  .postal-address {
+    position: relative;
+    left: -16px;
+    margin: 60px 0 128px 0;
+    h1 {
+      margin-bottom: 16px;
+      @include roboto(20px, bold, $green_text)
+    }
+    p {
+      line-height: 16px;
+      @include roboto(14px, light, #9c9c9c)
+    }
+  }
+  
+}
+#message-success_popup {
+  width: 468px;
+  height: 610px;
+  .delete-confirmation {
+    padding: 10px;
+    min-height: 140px;
+  }
+  .delete-confirmation:hover span {
+    text-decoration: none !important;
+  }
+  .delete-question:hover {
+    text-decoration: none !important;
+  }
+}

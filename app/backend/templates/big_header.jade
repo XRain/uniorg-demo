@@ -1,0 +1,77 @@
+include kit/kit
+header
+   a.logo-link(href="/")
+      i.logo
+   mixin kit_menu(page)
+   a.prev-slide
+   a.next-slide
+   div.slider
+      input#slides-qty(type='hidden', value=page.slides.length)
+      div.slides-wrapper
+         each slide in page.slides
+            - var pos = slide.pos
+            span.slide(id='slide' + slide.pos, class=(pos == '1')?'':'slide_inactive')
+               if slide.img
+                  img(src=slide.img)
+               div.slide-inner
+                  p.slide-title 
+                     a(href=slide.href, target='_blank') #{slide.title}
+                  p.slide-text
+                     a(href=slide.href, target='_blank') #{slide.text}
+                  mixin kit_button({size: "m", text: page.i18n['learnMore'], href: slide.href})
+      span.slide-indicator
+         each slide in page.slides
+            - var pos = slide.pos
+            a.slide-button(id='slide-button' + pos, class=(pos == '1')?'slide-button_active':'')
+   div#login-popup.popup.hidden
+      div.popup_inner.login-popup_wrapper
+         div.popup-content
+            div.popup-content_align
+               a.popup_close
+               div.login.auth-window
+                  div.login-popup.login-popup_org
+                     h1 #{page.i18n.signin}
+                     form.login-form_org(action='/login', method='POST')
+                        input(name="type", type="hidden", value="org")
+                        input(name="password", type="hidden", value="org")
+                        mixin kit_input({placeholder: page.i18n.enterEmail, name: 'email', type: 'email'})
+                        mixin kit_input({placeholder: page.i18n.enterPassword, name: 'pass', type: 'password'})
+                        div.auth-messagebox.hidden
+
+                        mixin kit_button({size: 'login', text: page.i18n.signin, id: 'login-form_org_confirm'})
+                        div.login-toolbox
+                           a.forgot-password_switch.login_link #{page.i18n.forgotPassword}
+                           br
+                           p.login-reminder #{page.i18n.noAccount}
+                           a.signup_switch.login_link #{page.i18n.createOne}
+               div.register.auth-window.hidden
+                  div.login-popup.login-popup_org
+                     h1 #{page.i18n.signup}
+                     form.register-form_org
+                        input(name="type", type="hidden", value="org")
+                        mixin kit_input({placeholder: page.i18n.enterTitle, name: 'title', type: 'title'})
+                        mixin kit_input({placeholder: page.i18n.enterEmail, name: 'email', type: 'email'})
+                        mixin kit_input({placeholder: page.i18n.enterPassword, name: 'pass', type: 'password'})
+                        div.auth-messagebox.hidden
+                        mixin kit_button({size: 'login', text: page.i18n.signup, id: 'reg-form_org_confirm'})
+                        div.login-toolbox
+                           p.login-reminder #{page.i18n.loginInExist}
+                           a.signin_switch.login_link #{page.i18n.login}
+
+
+               div.recover-password.auth-window.hidden
+                  div.login-popup
+                     h1 #{page.i18n.passRecovery}
+                     form.recovery-form
+                        mixin kit_input({placeholder: page.i18n.enterEmail, name: 'email', type: 'email'})
+                        mixin kit_button({size: 'login', text: page.i18n.sendPasswd, id: 'recovery_confirm'})
+                        div.login-toolbox
+                           p.login-reminder #{page.i18n.noAccount}
+                           a.signup_switch.login_link #{page.i18n.createOne}
+               div.reg-success.auth-window.hidden
+                  div.login-popup
+                     h1 #{page.i18n.accCreated}
+                     div.login-toolbox
+                        p.login-reminder #{page.i18n.regSuccess1}
+                        a.signin_switch.login_link #{page.i18n.login}
+                        p.login-reminder #{page.i18n.regSuccess2}

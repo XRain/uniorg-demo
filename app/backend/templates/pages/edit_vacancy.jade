@@ -1,0 +1,42 @@
+include ../kit/kit
+doctype html
+html
+    head
+        - var title = "Edit: " + page.vacancy.vacancyName;
+        - var datepickerText = page.vacancy.vacancyDate.replace(/-/g, '.');
+        title #{title}
+        link(rel="stylesheet" href="/static/css/styles.css")
+    body#editVacancy
+        div.content-wrapper
+            include ../header
+            div.content
+                div#update-vacancy
+                    form#update-vacancy_form(action='/vacancies/update', method='POST')
+                        input(type='hidden', name='vacancyId', value=page.vacancy._id)
+                        input.required.input-gray.event-name_big(name='vacancyName', placeholder=page.i18n.vacName, value=page.vacancy.vacancyName)
+                        mixin date_picker({text: datepickerText, size: 'l', name: 'vacancyDate', selectedDate: page.vacancy.vacancyDate})
+                        span.vacancy-type
+                            h1 #{page.i18n.employment}
+                            mixin checkbox({name: 'fullTime', title: page.i18n.fullTime, checked: page.vacancy.fullTime})
+                            br
+                            mixin checkbox({name: 'pastTime', title: page.i18n.pastTime, checked: page.vacancy.pastTime})
+                        span.vacancy-contacts
+                            h1 #{page.i18n.contacts}
+                            mixin named_input({id: 'vacancies-website', title: page.i18n.website, name: 'vacanciesWebsite', placeholder: page.i18n.enterLink, inputClass: 'input-url', value: page.vacancy.vacanciesWebsite})
+                            br
+                            mixin named_input({id: 'vacancies-email', title: page.i18n.email, name: 'vacanciesEmail', placeholder: page.i18n.enterEmail, inputClass: 'input-eml', value: page.vacancy.vacanciesEmail})
+                        span.salary
+                            h1 #{page.i18n.salary}
+                            mixin named_input({title: page.i18n.from,inputClass: 'number-input', name: 'salaryFrom', value: page.vacancy.salaryFrom})
+                            mixin named_input({title: page.i18n.to,inputClass: 'number-input', name: 'salaryTo', value: page.vacancy.salaryTo})
+                            i.euro &#8364
+                        h1 #{page.i18n.about}
+                        textarea.required(name='about', placeholder=page.i18n.enterEvtInfo) #{page.vacancy.about}
+                        mixin kit_button({size: 'n', text: page.i18n.save, id: 'edit-vacancy_button'})
+
+            include ../footer
+        div.footer-bg
+        div.overlay.hidden
+
+        script(src="/static/js/libs.js")
+        script(src="/static/js/scripts.js")
